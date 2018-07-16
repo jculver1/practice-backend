@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+/* GET shares listing for specific user */
 router.get('/:id/shares', (req, res, next) => {
   knex('shares')
       .innerJoin('users', 'users.id', 'shares.user_id')
@@ -19,21 +20,6 @@ router.get('/:id/shares', (req, res, next) => {
       .catch((err) => {
         next(err);
       });
-
-  // knex('favorites')
-  //     .innerJoin('books', 'books.id', 'favorites.book_id')
-  //     .where('favorites.user_id', req.claim.userId)
-  //     .orderBy('books.title', 'ASC')
-  //     .then((rows) => {
-  //       const favs = camelizeKeys(rows);
-  //
-  //       res.send(favs);
-  //     })
-  //     .catch((err) => {
-  //       next(err);
-  //     });
-
-
 });
 
 module.exports = router;
