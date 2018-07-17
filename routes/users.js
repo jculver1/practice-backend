@@ -10,9 +10,10 @@ router.get('/', function(req, res, next) {
 
 /* GET shares listing for specific user */
 router.get('/:id/shares', (req, res, next) => {
-  knex('shares')
-      .innerJoin('users', 'users.id', 'shares.user_id')
-      .where('shares.user_id', req.params.id)
+  knex('users_shares')
+      .innerJoin('users', 'users.id', 'users_shares.user_id')
+      .innerJoin('shares', 'shares.id', 'users_shares.share_id')      
+      .where('users.id', req.params.id)
       .then((rows) => {
         const users_shares = camelizeKeys(rows);
         res.send(users_shares);
