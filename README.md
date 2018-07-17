@@ -56,3 +56,23 @@ How does this work? Take 10 minutes to explore the database tables created by mi
 
 ## CFU: What happens when user 2 adds a share?
 ## Your answer here:
+
+## What would tables look like if this were many to many?
+## The users table
+| id | email |
+| -- | ----- |
+| 1  | first1.last1@gmail.com |
+| 2  | first2.last2@gmail.com |
+
+## The shares table
+| id | text | 
+| -- | ---- | 
+| 1  | hey  | 
+| 2  | hi   | 
+| 3  | bye  | 
+
+## The join table
+| id | share_id | user_id |
+| -- | ---- | ----- |
+| 1  | 1 | 1 |
+| 2  | 1 | 2 |
