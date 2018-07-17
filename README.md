@@ -18,7 +18,14 @@ This app has two tables: _users_ and _shares_. Should we put everything in one t
 | 1  | first1.last1@gmail.com | hey |
 | 2  | first2.last2@gmail.com | hi |
 
-## Let's talk joins and REST urls
+## What's that look like when user 1 adds another share?
+| id | email | text |
+| -- | ----- | ---- |
+| 1  | first1.last1@gmail.com | hey |
+| 2  | first2.last2@gmail.com | hi |
+| 1  | first1.last1@gmail.com | bye |
+
+## Oof! Ok let's talk joins and REST urls
 After running steps above, go to http://localhost:3001/shares in the browser to see shares from all users. Now go to http://localhost:3001/users/1/shares to see shares from just user 1. 
 
 How does this work? Take 10 minutes to explore the database tables created by migrations, look at the routes, and play with the app.
