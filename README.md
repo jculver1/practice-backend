@@ -9,27 +9,35 @@ A simple back-end for the [practice-frontend repo](https://github.com/gSchool/pr
 5. `npm install`
 6. `npm start`
 
-## Urls and REST
+## Why Joins? Let's put it all in one table!
+This app has two tables: _users_ and _shares_. Should we put everything in one table?
+
+## The Everything table (users and shares)
+| id | email | text |
+| -- | ----- | ---- |
+| 1  | first1.last1@gmail.com | hey |
+| 2  | first2.last2@gmail.com | hi |
+
+## Let's talk joins and REST urls
 After running steps above, go to http://localhost:3001/shares in the browser to see shares from all users. Now go to http://localhost:3001/users/1/shares to see shares from just user 1. 
 
 How does this work? Take 10 minutes to explore the database tables created by migrations, look at the routes, and play with the app.
 
 ## CFU: Why is id repeated in the knex join?
+## Your answer here:
 
 ## Useful PSQL commands
 * `\d` to see tables
 * `\d table-name` to see columns in a table
 * `select * from table-name;` to see data in table
 
-## The Users table
-
+## The users table
 | id | email |
 | -- | ----- |
 | 1  | first1.last1@gmail.com |
 | 2  | first2.last2@gmail.com |
 
-## The Shares table
-
+## The shares table
 | id | text | user_id |
 | -- | ---- | ----- |
 | 1  | hey  | 1 |
@@ -37,3 +45,4 @@ How does this work? Take 10 minutes to explore the database tables created by mi
 | 3  | bye  | 1 |
 
 ## CFU: What happens when user 2 adds a share?
+## Your answer here:
