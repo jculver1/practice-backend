@@ -1,9 +1,10 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const knex = require("../knex");
 const { camelizeKeys, decamelizeKeys } = require("humps");
+const jwt = require('jsonwebtoken');
 
-var bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 router.post("/create", (req, res, next) => {
@@ -15,7 +16,8 @@ router.post("/create", (req, res, next) => {
       })
       .then(function(data) {
         if (data) {
-          res.redirect("/home");
+          var token = jwt.sign({ user: data }, 'shhhhh');
+          res.send({"jwt": token});
         }
       });
   });
@@ -23,13 +25,14 @@ router.post("/create", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   knex("users").where("users.email", req.body.username).then(function(user) {
-    let thisUser = user[0];
+    const thisUser = user[0];
     if (!thisUser) {
       res.redirect("www.google.com");
     } else {
       bcrypt.compare(req.body.password, thisUser.hashed_password, function(err, result) {
         if (result == true) {
-          res.redirect("/home");
+          var token = jwt.sign({ user: thisUser }, 'shhhhh');          
+          res.send({"jwt": token});
         } else {
           res.send("Incorrect password");
           res.redirect("/");
