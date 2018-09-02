@@ -3,6 +3,9 @@ var router = express.Router();
 const knex = require('../knex');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
