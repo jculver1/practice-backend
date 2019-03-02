@@ -29,8 +29,7 @@ router.post("/login", (req, res, next) => {
     if (thisUser) {
       bcrypt.compare(req.body.password, thisUser.hashed_password, function(err, result) {
         if (result == true) {
-          var token = jwt.sign({ user: thisUser }, 'shhhhh');          
-          console.log("token", token)
+          var token = jwt.sign({ user: thisUser }, 'shhhhh');
           res.send({"jwt": token});
         } else {
           res.send(400);
