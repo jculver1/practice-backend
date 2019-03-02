@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
     console.log("token", token)
     try {
       var decoded = jwt.verify(token, 'shhhhh');
-      res.send({message:"HIDDEN DATA"})
+      res.send({message: decoded})
     } catch(err) {
       res.send(400)
     }
