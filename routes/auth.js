@@ -11,13 +11,10 @@ router.post("/create", (req, res, next) => {
       .insert({
         email: req.body.username,
         hashed_password: hash
-      })
-      .then(function(data) {
-        if (data) {
-          var token = jwt.sign({ user: data }, 'shhhhh');
-          res.send({"jwt": token});  
-        }
-      }).catch(function(error) {
+      }).then(function(){
+        res.send({message: "success"});
+      }
+      ).catch(function(error) {
         res.send(400);
       })
   });
